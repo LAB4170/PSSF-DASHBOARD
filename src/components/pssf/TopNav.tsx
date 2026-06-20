@@ -24,7 +24,7 @@ export function TopNav() {
   const { theme, toggleTheme, fontSize, cycleFontSize } = useTheme();
   return (
     <header className="sticky top-0 z-40 border-b border-border bg-[color:var(--navy-deep)]/85 backdrop-blur supports-[backdrop-filter]:bg-[color:var(--navy-deep)]/70">
-      <div className="mx-auto grid grid-cols-[auto_1fr_auto] items-center gap-3 max-w-[1600px] px-3 sm:px-6 py-2.5">
+      <div className="w-full grid grid-cols-[auto_1fr_auto] items-center gap-3 px-4 sm:px-6 lg:px-8 xl:px-12 py-2.5">
         <Link to="/" className="flex items-center gap-2 shrink-0">
           <div className="h-9 w-9 rounded-lg bg-gradient-to-br from-[color:var(--gold)] to-[#a87b09] grid place-items-center text-[color:var(--navy)] font-bold shadow-[0_6px_18px_-6px_color-mix(in_oklab,var(--gold)_70%,transparent)]">P</div>
           <div className="leading-tight hidden sm:block">

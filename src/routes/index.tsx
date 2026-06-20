@@ -22,7 +22,7 @@ function Dashboard() {
   return (
     <PageShell title="Executive Operations Dashboard" subtitle="Live pipeline view across membership, contributions, claims, and finance.">
       {/* KPI grid */}
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-3">
         <Kpi label="Total Members" value="766,000" delta="+2.4% MoM" tone="gold" icon={<Users className="h-4 w-4" />} />
         <Kpi label="Active Members" value="612,000" delta="79.9% of total" tone="teal" icon={<CheckCircle2 className="h-4 w-4" />} />
         <Kpi label="Total Sponsors" value="412" delta="+6 this month" tone="info" icon={<Building2 className="h-4 w-4" />} />
@@ -41,8 +41,8 @@ function Dashboard() {
       </div>
 
       {/* Trends row */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
-        <Section title="Contributions Trend (KSh B)" className="lg:col-span-2">
+      <div className="grid grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+        <Section title="Contributions Trend (KSh B)" className="lg:col-span-2 xl:col-span-3">
           <ResponsiveContainer width="100%" height={260}>
             <AreaChart data={contributionTrend}>
               <defs>
@@ -77,8 +77,8 @@ function Dashboard() {
         </Section>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
-        <Section title="Claims Workflow Funnel" className="lg:col-span-2">
+      <div className="grid grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+        <Section title="Claims Workflow Funnel" className="lg:col-span-2 xl:col-span-3">
           <Funnel steps={claimsFunnel} />
         </Section>
         <Section title="SLA & Rates">
@@ -91,8 +91,8 @@ function Dashboard() {
         </Section>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
-        <Section title="Claims Received vs Paid">
+      <div className="grid grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+        <Section title="Claims Received vs Paid" className="xl:col-span-2">
           <ResponsiveContainer width="100%" height={220}>
             <LineChart data={claimsTrend}>
               <CartesianGrid stroke="rgba(255,255,255,0.05)" />
@@ -127,8 +127,8 @@ function Dashboard() {
         </Section>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
-        <Section title="Top 5 Sponsors by Contribution (KSh B)">
+      <div className="grid grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+        <Section title="Top 5 Sponsors by Contribution (KSh B)" className="xl:col-span-2">
           <ResponsiveContainer width="100%" height={240}>
             <BarChart data={topSponsorsContribution} layout="vertical" margin={{ left: 24 }}>
               <CartesianGrid stroke="rgba(255,255,255,0.05)" horizontal={false} />

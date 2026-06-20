@@ -4,7 +4,7 @@ import { Tilt3D } from "@/components/pssf/Tilt3D";
 
 export function PageShell({ title, subtitle, children }: { title: string; subtitle?: string; children: ReactNode }) {
   return (
-    <div className="mx-auto max-w-[1600px] px-6 py-6 space-y-6">
+    <div className="w-full px-4 sm:px-6 lg:px-8 xl:px-12 py-6 space-y-6">
       <div className="flex items-end justify-between flex-wrap gap-3">
         <div>
           <h1 className="text-2xl font-bold tracking-tight">
