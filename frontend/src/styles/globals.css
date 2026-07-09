@@ -1,0 +1,259 @@
+@import "tailwindcss" source(none);
+@source "../";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+  --color-info: var(--info);
+  --color-info-foreground: var(--info-foreground);
+  --color-gold: var(--gold);
+  --color-teal: var(--teal);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-surface: var(--surface);
+  --color-surface-elevated: var(--surface-elevated);
+  --color-navy: var(--navy);
+  --color-navy-deep: var(--navy-deep);
+  --font-display: "Outfit", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
+}
+
+:root, .dark {
+  --radius: 0.75rem;
+  --app-font-size: 16px;
+  /* PSSF v2 — navy operations theme (dark) */
+  --navy-deep: #060B17;
+  --navy: #0B1120;
+  --background: #0B1120;
+  --foreground: #E6EDF7;
+  --surface: #111B30;
+  --surface-elevated: #16223C;
+  --card: #16223C;
+  --card-foreground: #E6EDF7;
+  --popover: #16223C;
+  --popover-foreground: #E6EDF7;
+  --primary: #D4A017;
+  --primary-foreground: #0B1120;
+  --gold: #D4A017;
+  --teal: #0EA5A0;
+  --secondary: #16223C;
+  --secondary-foreground: #E6EDF7;
+  --muted: #1A2541;
+  --muted-foreground: #94A3C2;
+  --accent: #0EA5A0;
+  --accent-foreground: #0B1120;
+  --info: #3B82F6;
+  --info-foreground: #FFFFFF;
+  --destructive: #E05252;
+  --destructive-foreground: #FFFFFF;
+  --success: #22C55E;
+  --success-foreground: #052E16;
+  --warning: #F59E0B;
+  --warning-foreground: #1A1206;
+  --border: rgba(255,255,255,0.08);
+  --input: rgba(255,255,255,0.12);
+  --ring: #D4A017;
+  --chart-1: #D4A017;
+  --chart-2: #0EA5A0;
+  --chart-3: #3B82F6;
+  --chart-4: #F59E0B;
+  --chart-5: #E05252;
+  --bg-grad-1: rgba(212,160,23,0.08);
+  --bg-grad-2: rgba(14,165,160,0.08);
+  --surface-soft: rgba(255,255,255,0.05);
+  --surface-line: rgba(255,255,255,0.08);
+  --card-sheen: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0));
+  --shadow-bevel: inset 0 1px 0 0 rgba(255,255,255,0.08);
+  --shadow-ambient: 0 15px 30px -10px rgba(0,0,0,0.6);
+  --shadow-ambient-hover: 0 30px 60px -12px rgba(0,0,0,0.9);
+  --shadow-contact: 0 2px 4px 0 rgba(0,0,0,0.8);
+}
+
+.light {
+  /* PSSF v2 — light operations theme */
+  --navy-deep: #FFFFFF;
+  --navy: #FFFFFF;
+  --background: #E8EDF4;
+  --foreground: #0B1120;
+  --surface: #FFFFFF;
+  --surface-elevated: #FFFFFF;
+  --card: #FFFFFF;
+  --card-foreground: #0B1120;
+  --popover: #FFFFFF;
+  --popover-foreground: #0B1120;
+  --primary: #B7860B;
+  --primary-foreground: #FFFFFF;
+  --gold: #B7860B;
+  --teal: #0B7F7B;
+  --secondary: #EEF2F8;
+  --secondary-foreground: #0B1120;
+  --muted: #E9EEF6;
+  --muted-foreground: #4B5A75;
+  --accent: #0B7F7B;
+  --accent-foreground: #FFFFFF;
+  --info: #2563EB;
+  --info-foreground: #FFFFFF;
+  --destructive: #C0392B;
+  --destructive-foreground: #FFFFFF;
+  --success: #16A34A;
+  --success-foreground: #FFFFFF;
+  --warning: #B45309;
+  --warning-foreground: #FFFFFF;
+  --border: rgba(11,17,32,0.10);
+  --input: rgba(11,17,32,0.14);
+  --ring: #B7860B;
+  --bg-grad-1: rgba(183,134,11,0.08);
+  --bg-grad-2: rgba(11,127,123,0.08);
+  --surface-soft: rgba(11,17,32,0.04);
+  --surface-line: rgba(11,17,32,0.08);
+  --card-sheen: linear-gradient(180deg, rgba(255,255,255,0.8), rgba(255,255,255,0));
+  --shadow-bevel: inset 0 1px 0 0 rgba(255,255,255,1);
+  --shadow-ambient: 0 15px 30px -10px rgba(0,0,0,0.1);
+  --shadow-ambient-hover: 0 30px 60px -12px rgba(0,0,0,0.15);
+  --shadow-contact: 0 2px 4px 0 rgba(0,0,0,0.06);
+}
+
+html { font-size: var(--app-font-size, 16px); }
+
+@layer base {
+  * { border-color: var(--color-border); }
+  body {
+    background:
+      radial-gradient(1200px 600px at 80% -10%, var(--bg-grad-1), transparent 60%),
+      radial-gradient(900px 500px at -10% 110%, var(--bg-grad-2), transparent 60%),
+      var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    font-weight: 500;
+    font-variant-numeric: tabular-nums;
+    min-height: 100vh;
+  }
+  h1, h2, h3, h4 { font-family: var(--font-display); letter-spacing: -0.02em; font-weight: 700; }
+}
+
+@utility surface-card {
+  position: relative;
+  background:
+    linear-gradient(170deg,
+      color-mix(in oklab, var(--color-card) 100%, white 6%) 0%,
+      var(--color-card) 35%),
+    var(--color-card);
+  border: 1px solid var(--color-border);
+  border-top: 1px solid color-mix(in oklab, var(--color-border) 50%, white 40%);
+  border-radius: var(--radius-lg);
+  box-shadow:
+    var(--shadow-bevel),
+    var(--shadow-contact),
+    var(--shadow-ambient);
+  transition: box-shadow 280ms ease, border-color 280ms ease;
+}
+.surface-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(140deg,
+    color-mix(in oklab, var(--color-gold) 48%, transparent),
+    transparent 40%,
+    color-mix(in oklab, var(--color-teal) 32%, transparent) 95%);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+          mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 280ms ease;
+  pointer-events: none;
+}
+.surface-card:hover {
+  border-color: color-mix(in oklab, var(--color-gold) 40%, var(--color-border));
+  box-shadow:
+    var(--shadow-bevel),
+    var(--shadow-contact),
+    var(--shadow-ambient-hover),
+    0 0 0 1px color-mix(in oklab, var(--color-gold) 15%, transparent);
+}
+.surface-card:hover::before { opacity: 1; }
+
+@utility kpi-card {
+  cursor: default;
+  transition: box-shadow 220ms ease;
+}
+
+@utility tab-pill {
+  position: relative;
+  isolation: isolate;
+  transition: color 180ms ease, transform 180ms ease;
+}
+.tab-pill::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 0.5rem;
+  background: var(--surface-soft);
+  opacity: 0;
+  transform: scale(0.94);
+  transition: opacity 180ms ease, transform 180ms ease;
+  z-index: -1;
+}
+.tab-pill:hover::before { opacity: 1; transform: scale(1); }
+.tab-pill:hover { transform: translateY(-1px); }
+
+@utility tab-pill-active {
+  color: var(--color-gold);
+}
+.tab-pill-active::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 0.5rem;
+  background: linear-gradient(180deg,
+    color-mix(in oklab, var(--color-gold) 24%, transparent),
+    color-mix(in oklab, var(--color-gold) 10%, transparent));
+  box-shadow:
+    0 0 0 1px color-mix(in oklab, var(--color-gold) 50%, transparent) inset,
+    0 6px 18px -8px color-mix(in oklab, var(--color-gold) 55%, transparent);
+  opacity: 1;
+  transform: scale(1);
+  z-index: -1;
+}
+
+@utility scroll-rail {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.scroll-rail::-webkit-scrollbar { display: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .surface-card, .tab-pill, .kpi-card { transition: none !important; }
+  .surface-card:hover, .kpi-card:hover, .tab-pill:hover { transform: none !important; }
+}
+
+@utility gold-text { color: var(--color-gold); }
+@utility teal-text { color: var(--color-teal); }
