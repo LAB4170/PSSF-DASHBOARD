@@ -1,12 +1,9 @@
 [build]
-  # Tell Netlify that the frontend code is in the 'frontend' directory
-  base = "frontend"
+  # We run the build from the root directory to avoid Netlify base directory duplication issues
+  command = "cd frontend && npm install && npm run build"
   
-  # The build command to run inside the frontend directory
-  command = "npm install && npm run build"
-  
-  # The directory where the built assets are output (relative to the base directory)
-  publish = "dist/client"
+  # The output folder is explicitly defined from the root
+  publish = "frontend/dist/client"
 
 [[redirects]]
   # Redirect all unknown requests to index.html to allow TanStack Router to handle routing
