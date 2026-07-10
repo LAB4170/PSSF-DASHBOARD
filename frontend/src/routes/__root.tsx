@@ -3,30 +3,10 @@ import {
   Outlet,
   Link,
   createRootRouteWithContext,
-  HeadContent,
-  Scripts,
 } from "@tanstack/react-router";
-import type { ReactNode } from "react";
 
-import appCss from "../styles/globals.css?url";
 import { TopNav } from "@/components/shared/TopNav";
 import { ThemeProvider } from "@/components/shared/ThemeProvider";
-
-// ─── Inline script injected into <head> BEFORE any paint ──────────────────────
-// This eliminates the white flash (FOUC) by reading localStorage and setting
-// the `dark` class synchronously before the browser renders a single pixel.
-const themeScript = `
-(function() {
-  try {
-    var t = localStorage.getItem('pssf-theme') || 'dark';
-    document.documentElement.classList.add(t);
-    document.documentElement.style.colorScheme = t;
-  } catch(e) {
-    document.documentElement.classList.add('dark');
-    document.documentElement.style.colorScheme = 'dark';
-  }
-})();
-`.trim();
 
 function NotFoundComponent() {
   return (
@@ -81,50 +61,10 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
 }
 
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
-  head: () => ({
-    meta: [
-      { charSet: "utf-8" },
-      { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "PSSF Operations Center" },
-      { name: "description", content: "PSSF enterprise operations dashboard — contributions, claims, benefits, and analytics." },
-      { property: "og:title", content: "PSSF Operations Center" },
-      { property: "og:description", content: "Live operations dashboard for the Public Service Superannuation Fund." },
-      { property: "og:type", content: "website" },
-    ],
-    links: [
-      { rel: "preconnect", href: "https://fonts.googleapis.com" },
-      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-      {
-        rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700&family=Outfit:wght@400;700&display=swap",
-      },
-      {
-        rel: "stylesheet",
-        href: appCss,
-      },
-    ],
-  }),
-  shellComponent: RootShell,
   component: RootComponent,
   notFoundComponent: NotFoundComponent,
   errorComponent: ErrorComponent,
 });
-
-function RootShell({ children }: { children: ReactNode }) {
-  return (
-    <html lang="en" className="dark">
-      <head>
-        {/* Blocking theme script — must run before HeadContent / CSS to kill FOUC */}
-        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
-        <HeadContent />
-      </head>
-      <body>
-        {children}
-        <Scripts />
-      </body>
-    </html>
-  );
-}
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();

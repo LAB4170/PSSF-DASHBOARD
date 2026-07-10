@@ -1,12 +1,12 @@
 [build]
-  # We run the build from the root directory to avoid Netlify base directory duplication issues
+  # Run from root — cd into frontend, install, and build
   command = "cd frontend && npm install && npm run build"
   
-  # The output folder is explicitly defined from the root
-  publish = "frontend/dist/client"
+  # Vite outputs to frontend/dist (plain SPA build)
+  publish = "frontend/dist"
 
 [[redirects]]
-  # Redirect all unknown requests to index.html to allow TanStack Router to handle routing
+  # SPA fallback: all routes go to index.html so TanStack Router handles them
   from = "/*"
   to = "/index.html"
   status = 200
