@@ -25,8 +25,8 @@ const ThemeCtx = createContext<Ctx | null>(null);
 // This matches what the blocking <script> in __root.tsx already set on <html>,
 // so React hydration sees the same value and zero re-render flash occurs.
 function getInitialTheme(): Theme {
-  if (typeof window === "undefined") return "dark";
-  return (localStorage.getItem("pssf-theme") as Theme) || "dark";
+  if (typeof window === "undefined") return "light";
+  return (localStorage.getItem("pssf-theme") as Theme) || "light";
 }
 
 function getInitialFontSize(): FontSize {
