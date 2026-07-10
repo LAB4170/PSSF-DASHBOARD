@@ -26,15 +26,13 @@ export function PageShell({ title, subtitle, children }: { title: string; subtit
 
 export function Section({ title, action, children, className }: { title: string; action?: ReactNode; children: ReactNode; className?: string }) {
   return (
-    <Tilt3D max={6} scale={1.008} className={cn("rounded-[var(--radius-lg)]", className)}>
-      <section className="surface-card p-5">
-        <div className="flex items-center justify-between mb-4">
-          <h2 className="text-sm font-bold uppercase tracking-wider text-muted-foreground">{title}</h2>
-          {action}
-        </div>
-        {children}
-      </section>
-    </Tilt3D>
+    <section className={cn("surface-card p-5", className)}>
+      <div className="flex items-center justify-between mb-4">
+        <h2 className="text-sm font-bold uppercase tracking-wider text-muted-foreground">{title}</h2>
+        {action}
+      </div>
+      {children}
+    </section>
   );
 }
 

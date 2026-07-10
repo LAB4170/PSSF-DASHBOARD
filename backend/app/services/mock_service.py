@@ -288,3 +288,116 @@ def finance_summary():
         ],
         "throughput": contribution_trend(),
     }
+
+
+# ──────────────────────────────────────────────
+# Employee Performance Tracker Mock Data
+# ──────────────────────────────────────────────
+
+MOCK_MEMBERS = [
+    {
+        "identity": {
+            "member_id": "PSSF/2018/45129",
+            "name": "John Mutua",
+            "national_id": "24518923",
+            "sponsor": "Teachers Service Commission",
+            "join_date": "2018-04-12",
+            "status": "Exited"
+        },
+        "claims": [
+            {
+                "claim_no": "CLM2026-001",
+                "type": "Retirement",
+                "submitted": "2026-06-25",
+                "current_stage": "Approval L2",
+                "tat_days": 12,
+                "sla": "Within",
+                "officer": "David K."
+            }
+        ],
+        "active_claim_tracker": {
+            "claim_no": "CLM2026-001",
+            "type": "Retirement",
+            "sla": "Within",
+            "tat_days": 12,
+            "officer": "David K.",
+            "stages": [
+                {"name": "Receipt", "status": "completed", "date": "2026-06-25", "tat_days": 1},
+                {"name": "CRM Validation", "status": "completed", "date": "2026-06-26", "tat_days": 2},
+                {"name": "Member Clearance", "status": "completed", "date": "2026-06-28", "tat_days": 3},
+                {"name": "Calculation", "status": "completed", "date": "2026-07-01", "tat_days": 2},
+                {"name": "Approval L1", "status": "completed", "date": "2026-07-03", "tat_days": 2},
+                {"name": "Approval L2", "status": "active", "date": "2026-07-05", "tat_days": 2},
+                {"name": "Finance", "status": "pending"},
+                {"name": "Online Banking", "status": "pending"},
+                {"name": "Paid", "status": "pending"}
+            ]
+        },
+        "contribution": {
+            "sponsor": "Teachers Service Commission",
+            "period": "June 2026",
+            "amount": "KSh 8,400",
+            "current_stage": "Approval",
+            "has_exception": False,
+            "pipeline": [
+                {"name": "Received Schedule", "status": "completed", "date": "2026-07-01"},
+                {"name": "Reconciliation", "status": "completed", "date": "2026-07-02"},
+                {"name": "Membership Analysis", "status": "completed", "date": "2026-07-02"},
+                {"name": "Enrollment", "status": "completed", "date": "2026-07-03"},
+                {"name": "Loading", "status": "completed", "date": "2026-07-04"},
+                {"name": "Approval", "status": "active", "date": "2026-07-05"},
+                {"name": "Posting", "status": "pending"},
+                {"name": "Interest Processing", "status": "pending"}
+            ]
+        },
+        "benefit_history": [
+            {
+                "type": "Partial Withdrawal",
+                "amount": "KSh 450,000",
+                "date": "2023-08-15",
+                "status": "Paid"
+            }
+        ]
+    },
+    {
+        "identity": {
+            "member_id": "PSSF/2021/89342",
+            "name": "Faith Wambui",
+            "national_id": "28341982",
+            "sponsor": "National Treasury",
+            "join_date": "2021-09-01",
+            "status": "Active"
+        },
+        "claims": [],
+        "active_claim_tracker": None,
+        "contribution": {
+            "sponsor": "National Treasury",
+            "period": "June 2026",
+            "amount": "KSh 12,600",
+            "current_stage": "Membership Analysis",
+            "has_exception": True,
+            "pipeline": [
+                {"name": "Received Schedule", "status": "completed", "date": "2026-07-02"},
+                {"name": "Reconciliation", "status": "completed", "date": "2026-07-04"},
+                {"name": "Membership Analysis", "status": "active", "date": "2026-07-06"},
+                {"name": "Enrollment", "status": "pending"},
+                {"name": "Loading", "status": "pending"},
+                {"name": "Approval", "status": "pending"},
+                {"name": "Posting", "status": "pending"},
+                {"name": "Interest Processing", "status": "pending"}
+            ]
+        },
+        "benefit_history": []
+    }
+]
+
+def search_members(query: str) -> List[Dict[str, Any]]:
+    query = query.lower()
+    return [m["identity"] for m in MOCK_MEMBERS if query in m["identity"]["name"].lower() or query in m["identity"]["member_id"].lower() or query in m["identity"]["national_id"]]
+
+def get_member_profile(member_id: str) -> Dict[str, Any]:
+    for m in MOCK_MEMBERS:
+        if m["identity"]["member_id"] == member_id:
+            return m
+    return None
+

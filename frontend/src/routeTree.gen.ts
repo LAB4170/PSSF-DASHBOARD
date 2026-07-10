@@ -14,6 +14,7 @@ import { Route as OutreachRouteImport } from './routes/outreach'
 import { Route as MembershipRouteImport } from './routes/membership'
 import { Route as HrErpRouteImport } from './routes/hr-erp'
 import { Route as FinanceRouteImport } from './routes/finance'
+import { Route as EmployeePerformanceRouteImport } from './routes/employee-performance'
 import { Route as ContributionsRouteImport } from './routes/contributions'
 import { Route as ClaimsRouteImport } from './routes/claims'
 import { Route as BenefitsRouteImport } from './routes/benefits'
@@ -44,6 +45,11 @@ const HrErpRoute = HrErpRouteImport.update({
 const FinanceRoute = FinanceRouteImport.update({
   id: '/finance',
   path: '/finance',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EmployeePerformanceRoute = EmployeePerformanceRouteImport.update({
+  id: '/employee-performance',
+  path: '/employee-performance',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContributionsRoute = ContributionsRouteImport.update({
@@ -84,6 +90,7 @@ export interface FileRoutesByFullPath {
   '/benefits': typeof BenefitsRoute
   '/claims': typeof ClaimsRoute
   '/contributions': typeof ContributionsRoute
+  '/employee-performance': typeof EmployeePerformanceRoute
   '/finance': typeof FinanceRoute
   '/hr-erp': typeof HrErpRoute
   '/membership': typeof MembershipRoute
@@ -97,6 +104,7 @@ export interface FileRoutesByTo {
   '/benefits': typeof BenefitsRoute
   '/claims': typeof ClaimsRoute
   '/contributions': typeof ContributionsRoute
+  '/employee-performance': typeof EmployeePerformanceRoute
   '/finance': typeof FinanceRoute
   '/hr-erp': typeof HrErpRoute
   '/membership': typeof MembershipRoute
@@ -111,6 +119,7 @@ export interface FileRoutesById {
   '/benefits': typeof BenefitsRoute
   '/claims': typeof ClaimsRoute
   '/contributions': typeof ContributionsRoute
+  '/employee-performance': typeof EmployeePerformanceRoute
   '/finance': typeof FinanceRoute
   '/hr-erp': typeof HrErpRoute
   '/membership': typeof MembershipRoute
@@ -126,6 +135,7 @@ export interface FileRouteTypes {
     | '/benefits'
     | '/claims'
     | '/contributions'
+    | '/employee-performance'
     | '/finance'
     | '/hr-erp'
     | '/membership'
@@ -139,6 +149,7 @@ export interface FileRouteTypes {
     | '/benefits'
     | '/claims'
     | '/contributions'
+    | '/employee-performance'
     | '/finance'
     | '/hr-erp'
     | '/membership'
@@ -152,6 +163,7 @@ export interface FileRouteTypes {
     | '/benefits'
     | '/claims'
     | '/contributions'
+    | '/employee-performance'
     | '/finance'
     | '/hr-erp'
     | '/membership'
@@ -166,6 +178,7 @@ export interface RootRouteChildren {
   BenefitsRoute: typeof BenefitsRoute
   ClaimsRoute: typeof ClaimsRoute
   ContributionsRoute: typeof ContributionsRoute
+  EmployeePerformanceRoute: typeof EmployeePerformanceRoute
   FinanceRoute: typeof FinanceRoute
   HrErpRoute: typeof HrErpRoute
   MembershipRoute: typeof MembershipRoute
@@ -208,6 +221,13 @@ declare module '@tanstack/react-router' {
       path: '/finance'
       fullPath: '/finance'
       preLoaderRoute: typeof FinanceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/employee-performance': {
+      id: '/employee-performance'
+      path: '/employee-performance'
+      fullPath: '/employee-performance'
+      preLoaderRoute: typeof EmployeePerformanceRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contributions': {
@@ -262,6 +282,7 @@ const rootRouteChildren: RootRouteChildren = {
   BenefitsRoute: BenefitsRoute,
   ClaimsRoute: ClaimsRoute,
   ContributionsRoute: ContributionsRoute,
+  EmployeePerformanceRoute: EmployeePerformanceRoute,
   FinanceRoute: FinanceRoute,
   HrErpRoute: HrErpRoute,
   MembershipRoute: MembershipRoute,

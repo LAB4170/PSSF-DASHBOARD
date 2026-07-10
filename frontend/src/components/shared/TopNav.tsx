@@ -2,7 +2,7 @@ import { Link, useRouterState } from "@tanstack/react-router";
 import {
   Home, Users, Wallet, FileText, Landmark, CreditCard, Settings,
   Briefcase, Smartphone, Megaphone, Sun, Moon, Type, Building2, ChevronDown, 
-  HeadphonesIcon, ShieldCheck, Monitor, FolderOpen, Calendar, MessageSquare, TrendingUp
+  HeadphonesIcon, ShieldCheck, Monitor, FolderOpen, Calendar, MessageSquare, TrendingUp, Activity
 } from "lucide-react";
 import { useTheme } from "@/components/shared/ThemeProvider";
 import {
@@ -77,6 +77,12 @@ export function TopNav() {
                       <Link to="/benefits" className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-colors">
                         <Landmark className="h-4 w-4" /> 
                         <span>Benefits Administration</span>
+                      </Link>
+                    </SheetClose>
+                    <SheetClose asChild>
+                      <Link to="/employee-performance" className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-colors">
+                        <Activity className="h-4 w-4" /> 
+                        <span>Employee Performance</span>
                       </Link>
                     </SheetClose>
                     <SheetClose asChild>

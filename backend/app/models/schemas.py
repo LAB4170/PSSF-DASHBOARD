@@ -108,3 +108,73 @@ class FinanceSummary(BaseModel):
     kpis: List[Kpi]
     batches: List[NameValue]
     throughput: List[TrendPoint]
+
+
+# ──────────────────────────────────────────────
+# Employee Performance Tracker models
+# ──────────────────────────────────────────────
+
+class MemberIdentity(BaseModel):
+    member_id: str
+    name: str
+    national_id: str
+    sponsor: str
+    join_date: str
+    status: str   # Active | Inactive | Dormant | Exited
+
+
+class ClaimSummary(BaseModel):
+    claim_no: str
+    type: str       # Retirement | Withdrawal | Death | Ill Health | Immigration
+    submitted: str
+    current_stage: str
+    tat_days: int
+    sla: str        # Within | At Risk | Breached
+    officer: str
+
+
+class ClaimStageStep(BaseModel):
+    name: str
+    status: str     # completed | active | pending
+    date: Optional[str] = None
+    tat_days: Optional[float] = None
+
+
+class ClaimTracker(BaseModel):
+    claim_no: str
+    type: str
+    sla: str
+    tat_days: int
+    officer: str
+    stages: List[ClaimStageStep]
+
+
+class ContributionPipelineStep(BaseModel):
+    name: str
+    status: str     # completed | active | pending | exception
+    date: Optional[str] = None
+
+
+class ContributionStatus(BaseModel):
+    sponsor: str
+    period: str
+    amount: str
+    current_stage: str
+    has_exception: bool
+    pipeline: List[ContributionPipelineStep]
+
+
+class BenefitRecord(BaseModel):
+    type: str
+    amount: str
+    date: str
+    status: str     # Paid | Pending | Rejected
+
+
+class MemberProfile(BaseModel):
+    identity: MemberIdentity
+    claims: List[ClaimSummary]
+    active_claim_tracker: Optional[ClaimTracker] = None
+    contribution: Optional[ContributionStatus] = None
+    benefit_history: List[BenefitRecord]
+

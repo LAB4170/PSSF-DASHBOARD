@@ -1,9 +1,13 @@
 from fastapi import APIRouter
 from app.services import mock_service
 
+from app.api import employee_performance
+
 router = APIRouter(prefix="/api", tags=["departments"])
 
 # ---------- Benefits ----------
+router.include_router(employee_performance.router, prefix="/benefits")
+
 @router.get("/benefits/summary", tags=["benefits"])
 def benefits_summary():
     return mock_service.benefits_summary()

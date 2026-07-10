@@ -99,7 +99,7 @@
   /* PSSF v2 — light operations theme */
   --navy-deep: #FFFFFF;
   --navy: #FFFFFF;
-  --background: #E8EDF4;
+  --background: #EEF2F7;
   --foreground: #0B1120;
   --surface: #FFFFFF;
   --surface-elevated: #FFFFFF;
@@ -257,3 +257,14 @@ html { font-size: var(--app-font-size, 16px); }
 
 @utility gold-text { color: var(--color-gold); }
 @utility teal-text { color: var(--color-teal); }
+
+/* Hide Lovable watermark */
+#lovable-badge, 
+lovable-badge,
+[id^="lovable-"],
+[class*="lovable-badge"] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}

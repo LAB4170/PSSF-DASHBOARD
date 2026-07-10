@@ -1,0 +1,18 @@
+[build]
+  # Build command (since package.json is inside frontend)
+  command = "npm run build"
+  
+  # The directory where the built assets are output
+  publish = "dist/client"
+
+[[redirects]]
+  # Redirect all unknown requests to index.html to allow TanStack Router to handle routing
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# You can configure environment variables directly here or in the Netlify Dashboard UI (Site Settings > Environment Variables)
+[build.environment]
+  NODE_VERSION = "20"
+  # Replace the URL below with your actual deployed backend URL
+  VITE_API_URL = "https://pssf-operations-centre.onrender.com"
